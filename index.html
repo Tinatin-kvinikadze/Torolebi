@@ -1,0 +1,1075 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ლოცვები</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Noto Serif Georgian", Georgia, serif;
+        background: linear-gradient(135deg, #1a472a 0%, #2d5a1e 100%);
+        min-height: 100vh;
+        padding: 8px;
+        color: #2d3748;
+        line-height: 1.8;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 300px;
+        border-bottom: 2px solid #e2e8f0;
+      }
+
+      .header-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 15px auto 12px;
+        display: block;
+        box-shadow: 0 4px 15px rgba(139, 90, 43, 0.35);
+        border: 3px solid rgba(184, 134, 11, 0.5);
+      }
+
+      h1 {
+        color: #1b5e20;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 1px 1px 3px rgba(27, 94, 32, 0.2);
+      }
+
+      .subtitle {
+        color: #718096;
+        font-size: 1.1em;
+        font-style: italic;
+      }
+
+      .prayer-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+        padding: 0 12px;
+        width: 100%;
+      }
+
+      .prayer-dropdown {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .prayer-dropdown summary {
+        list-style: none;
+        user-select: none;
+        padding: 16px 20px;
+        border-radius: 15px;
+        border: 1px solid rgba(184, 134, 11, 0.3);
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #2d3748;
+        background: linear-gradient(180deg, #ffffff 0%, #f5f7f0 100%);
+        box-shadow:
+          0 6px 18px rgba(0, 0, 0, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        cursor: pointer;
+        position: relative;
+        padding-right: 48px;
+      }
+
+      .prayer-dropdown summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .prayer-dropdown summary::after {
+        content: "▾";
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #b8860b;
+        font-size: 1.1em;
+      }
+
+      .prayer-dropdown[open] summary::after {
+        content: "▴";
+      }
+
+      .prayer-dropdown summary:focus {
+        outline: 2px solid rgba(184, 134, 11, 0.5);
+        outline-offset: 2px;
+        box-shadow:
+          0 6px 18px rgba(0, 0, 0, 0.2),
+          0 0 0 3px rgba(184, 134, 11, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      .prayer-list {
+        margin-top: 10px;
+        background: white;
+        border: 1px solid rgba(184, 134, 11, 0.25);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+      }
+
+      .prayer-list a {
+        display: block;
+        padding: 12px 16px;
+        text-decoration: none;
+        color: #2d3748;
+        font-weight: 600;
+        border-bottom: 1px solid #eef0f5;
+        transition: background 0.2s ease;
+      }
+
+      .prayer-list a:last-child {
+        border-bottom: none;
+      }
+
+      .prayer-list a:hover {
+        background: linear-gradient(135deg, #f0f7e6 0%, #e8f5e0 100%);
+      }
+
+      .prayer-link {
+        background: linear-gradient(135deg, #604827 0%, #b8860b 100%);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .prayer-link:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .section {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        border-radius: 15px;
+        padding: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .section h2 {
+        color: #2d3748;
+        font-size: 1.3em;
+        margin-bottom: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .section h2::before,
+      .section h2::after {
+        content: none;
+      }
+
+      .prayer-text {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 4px solid #b8860b;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-nexts {
+        display: btn-next grid;
+        gap: 15px;
+        margin-bottom: 40px;
+      }
+
+      .btn-next {
+        background: linear-gradient(135deg, #2e7d32 0%, #b8860b 100%);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-next:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Featured giorgi card */
+      .giorgi-featured {
+        margin-bottom: 20px;
+      }
+
+      .giorgi-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: linear-gradient(
+          135deg,
+          #5c3d00 0%,
+          #8b6300 40%,
+          #b8870c 72%,
+          #c9a22a 100%
+        );
+        padding: 11px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        color: white;
+        box-shadow:
+          0 6px 22px rgba(92, 61, 0, 0.52),
+          0 2px 8px rgba(0, 0, 0, 0.22),
+          inset 0 1px 0 rgba(255, 235, 150, 0.28);
+        border: 1.5px solid rgba(212, 175, 55, 0.7);
+        transition:
+          transform 0.28s ease,
+          box-shadow 0.28s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .giorgi-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          rgba(212, 175, 55, 0.13) 0%,
+          rgba(255, 255, 255, 0.07) 30%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .giorgi-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.12),
+          transparent
+        );
+        transform: skewX(-20deg);
+        transition: left 0.6s ease;
+        pointer-events: none;
+      }
+
+      .giorgi-card:hover::after {
+        left: 130%;
+      }
+
+      .giorgi-card:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 14px 36px rgba(92, 61, 0, 0.62),
+          0 5px 14px rgba(0, 0, 0, 0.25),
+          inset 0 1px 0 rgba(255, 235, 150, 0.22);
+      }
+      .pantanasa-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: linear-gradient(
+          135deg,
+          #555cbe 0%,
+          #27389b 40%,
+          #2c48a1 72%,
+          #183592 100%
+        );
+        padding: 11px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        color: white;
+        box-shadow:
+          0 6px 22px rgba(92, 61, 0, 0.52),
+          0 2px 8px rgba(0, 0, 0, 0.22),
+          inset 0 1px 0 rgba(255, 235, 150, 0.28);
+        border: 1.5px solid rgba(212, 175, 55, 0.7);
+        transition:
+          transform 0.28s ease,
+          box-shadow 0.28s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pantanasa-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          rgba(212, 175, 55, 0.13) 0%,
+          rgba(255, 255, 255, 0.07) 30%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .pantanasa-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.12),
+          transparent
+        );
+        transform: skewX(-20deg);
+        transition: left 0.6s ease;
+        pointer-events: none;
+      }
+
+      .pantanasa-card:hover::after {
+        left: 130%;
+      }
+
+      .pantanasa-card:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 14px 36px rgba(92, 61, 0, 0.62),
+          0 5px 14px rgba(0, 0, 0, 0.25),
+          inset 0 1px 0 rgba(255, 235, 150, 0.22);
+      }
+      .natlismcemeli-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: linear-gradient(
+          135deg,
+          #0e420e 0%,
+          #085c0f 40%,
+          #144b04 72%,
+          #06380a 100%
+        );
+        padding: 11px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        color: white;
+        box-shadow:
+          0 6px 22px rgba(92, 61, 0, 0.52),
+          0 2px 8px rgba(0, 0, 0, 0.22),
+          inset 0 1px 0 rgba(255, 235, 150, 0.28);
+        border: 1.5px solid rgba(212, 175, 55, 0.7);
+        transition:
+          transform 0.28s ease,
+          box-shadow 0.28s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .natlismcemeli-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          rgba(212, 175, 55, 0.13) 0%,
+          rgba(255, 255, 255, 0.07) 30%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .natlismcemeli-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.12),
+          transparent
+        );
+        transform: skewX(-20deg);
+        transition: left 0.6s ease;
+        pointer-events: none;
+      }
+
+      .natlismcemeli-card:hover::after {
+        left: 130%;
+      }
+
+      .natlismcemeli-card:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 14px 36px rgba(92, 61, 0, 0.62),
+          0 5px 14px rgba(0, 0, 0, 0.25),
+          inset 0 1px 0 rgba(255, 235, 150, 0.22);
+      }
+
+      .giorgi-icon {
+        font-size: 1.8em;
+        flex-shrink: 0;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+      }
+
+      .giorgi-text {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .giorgi-title {
+        font-size: 1.05em;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+      }
+
+      .giorgi-sub {
+        font-size: 0.75em;
+        opacity: 0.82;
+        margin-top: 2px;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        color: rgba(255, 238, 180, 0.88);
+      }
+
+      .giorgi-arrow {
+        font-size: 1.7em;
+        opacity: 0.75;
+        flex-shrink: 0;
+        color: rgba(255, 225, 120, 0.85);
+      }
+
+      .names-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .name-item {
+        background: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s ease;
+      }
+
+      .name-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .info-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+        color: white;
+        font-size: 11px;
+        cursor: pointer;
+        margin-left: 100px;
+        vertical-align: middle;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        flex-shrink: 0;
+        transition: transform 0.2s ease;
+      }
+
+      .info-btn:hover {
+        transform: scale(1.2);
+      }
+
+      .info-popup {
+        display: none;
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 20px;
+        z-index: 100;
+        background: white;
+        border: 1px solid rgba(184, 134, 11, 0.4);
+        border-radius: 8px;
+        padding: 10px 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+        font-size: 0.85em;
+        line-height: 1.6;
+        min-width: 260px;
+        max-width: 320px;
+        color: #2d3748;
+      }
+
+      .info-popup.show {
+        display: block;
+      }
+
+      .counter-section {
+        background: linear-gradient(135deg, #c8e6c9 0%, #fff8e1 100%);
+        border-radius: 20px;
+        padding: 25px 20px;
+        text-align: center;
+        margin: 30px 0;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        border: 1px solid rgba(184, 134, 11, 0.15);
+      }
+
+      .counter-display {
+        font-size: 2.8em;
+        font-weight: bold;
+        color: #1b5e20;
+        margin: 15px 0;
+        text-shadow: 1px 1px 3px rgba(27, 94, 32, 0.15);
+        background: white;
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        border-radius: 12px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow:
+          inset 0 2px 6px rgba(0, 0, 0, 0.1),
+          0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 2px solid rgba(184, 134, 11, 0.25);
+      }
+
+      .counter-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        min-width: 55px;
+      }
+
+      .btn-next {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.3em;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(24, 24, 24, 0.2);
+      }
+
+      .row {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: min(100%, 380px);
+        margin: 56px auto 0;
+      }
+
+      .row .btn-next {
+        width: 100%;
+      }
+
+      .btn-decrease {
+        background: linear-gradient(135deg, #2e7d32, #1b5e20);
+        color: white;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        padding: 0;
+        font-size: 1.5em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-reset {
+        background: linear-gradient(135deg, #b8860b, #8b6914);
+        color: white;
+        border-radius: 50px;
+        padding: 12px 28px;
+        font-size: 1em;
+      }
+
+      .btn-increase {
+        background: linear-gradient(135deg, #2e7d32, #1b5e20);
+        color: white;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        padding: 0;
+        font-size: 1.5em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn:active {
+        transform: scale(0.95);
+      }
+
+      .scroll-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .scroll-top:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .psalm-text {
+        background: white;
+        padding: 5px;
+        border-radius: 10px;
+        border-left: 4px solid #2e7d32;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .flower-icon {
+        color: #b8860b;
+        margin: 0 5px;
+      }
+
+      .font-controls {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .font-label {
+        font-size: 0.85em;
+        color: #718096;
+        margin-right: 2px;
+      }
+
+      .font-btn {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(184, 134, 11, 0.4);
+        border-radius: 8px;
+        background: rgba(184, 134, 11, 0.1);
+        color: #b8860b;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+      }
+
+      .font-btn:hover {
+        background: rgba(184, 134, 11, 0.28);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 2px solid #e2e8f0;
+        color: #718096;
+      }
+
+      .ghirs-arsi-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .ghirs-arsi-wrap em {
+        margin: 0;
+      }
+
+      .toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border: none;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        flex-shrink: 0;
+      }
+
+      .toggle-btn:hover {
+        transform: scale(1.15);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .toggle-btn.open {
+        transform: rotate(180deg);
+      }
+
+      .toggle-btn.open:hover {
+        transform: rotate(180deg) scale(1.15);
+      }
+
+      .ghirs-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+
+      .ghirs-content.show {
+        max-height: 10000px;
+      }
+
+      .accordion-item {
+        border: 1px solid rgba(184, 134, 11, 0.2);
+        border-radius: 10px;
+        margin-bottom: 8px;
+        overflow: hidden;
+        background: #f9faf5;
+        display: none;
+      }
+
+      .accordion-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #2e7d32;
+        background: linear-gradient(135deg, #f5f9f0 0%, #f0f5e8 100%);
+        user-select: none;
+        transition: background 0.2s;
+        font-size: 0.95em;
+      }
+
+      .accordion-header:hover {
+        background: linear-gradient(135deg, #e8f0e0 0%, #dfe8d5 100%);
+      }
+
+      .accordion-header .acc-arrow {
+        transition: transform 0.3s ease;
+        font-size: 14px;
+      }
+
+      .accordion-header.active .acc-arrow {
+        transform: rotate(180deg);
+      }
+
+      .accordion-header .acc-date {
+        font-size: 0.8em;
+        color: #718096;
+        font-weight: normal;
+        margin-left: 6px;
+      }
+
+      .accordion-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        padding: 0 14px;
+      }
+
+      .accordion-body.show {
+        max-height: 3000px;
+        padding: 10px 14px;
+      }
+
+      .accordion-body p {
+        margin-bottom: 8px;
+        line-height: 1.7;
+      }
+
+      .accordion-item.current {
+        border-color: #b8860b;
+        box-shadow: 0 2px 10px rgba(184, 134, 11, 0.2);
+        display: block;
+      }
+
+      .accordion-item.current .accordion-header {
+        background: linear-gradient(135deg, #dcedc8 0%, #c8e6c9 100%);
+      }
+
+      .accordion-item.current .accordion-header::after {
+        content: " ✦";
+        color: #b8860b;
+        font-size: 0.8em;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 2px;
+        }
+
+        .prayer-links {
+          padding: 0 8px;
+        }
+
+        h1 {
+          font-size: 2em;
+        }
+
+        .names-list {
+          grid-template-columns: 1fr;
+        }
+
+        .counter-display {
+          font-size: 1.8em;
+          width: 65px;
+          height: 65px;
+          line-height: 65px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img src="IMG_20211127_230442_774.webp" alt="" class="header-img" />
+        <h1>☦ ლოცვანი ☦</h1>
+        <div class="row">
+          <button class="btn-next" onclick="goToPrayer('morning.html')">
+            დილის ლოცვა
+          </button>
+          <button class="btn-next" onclick="goToPrayer('evening.html')">
+            საღამოს ლოცვა
+          </button>
+        </div>
+      </header>
+
+      <footer></footer>
+    </div>
+
+    <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+      ↑
+    </button>
+
+    <script>
+      let counter = 0;
+
+      function increaseCounter() {
+        counter++;
+        updateCounter();
+      }
+
+      function decreaseCounter() {
+        if (counter > 0) {
+          counter--;
+          updateCounter();
+        }
+      }
+
+      function resetCounter() {
+        counter = 0;
+        updateCounter();
+      }
+
+      function updateCounter() {
+        document.getElementById("counter").textContent = counter;
+      }
+
+      function goToPrayer(url) {
+        if (url) {
+          window.location.href = url;
+        }
+      }
+
+      // Scroll to top functionality
+      window.onscroll = function () {
+        const btn = document.getElementById("scrollTopBtn");
+        if (
+          document.body.scrollTop > 300 ||
+          document.documentElement.scrollTop > 300
+        ) {
+          btn.style.display = "flex";
+        } else {
+          btn.style.display = "none";
+        }
+      };
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      let currentFontSize =
+        parseInt(localStorage.getItem("fontSize"), 10) || 17;
+      function applyFontSize() {
+        document
+          .querySelectorAll(".content, .prayer-text, .psalm-text")
+          .forEach(function (el) {
+            el.style.fontSize = currentFontSize + "px";
+          });
+      }
+      function adjustFont(delta) {
+        currentFontSize = Math.min(26, Math.max(14, currentFontSize + delta));
+        localStorage.setItem("fontSize", currentFontSize);
+        applyFontSize();
+      }
+      applyFontSize();
+
+      function toggleGhirs() {
+        const content = document.getElementById("ghirsContent");
+        const btn = document.getElementById("ghirsToggle");
+        content.classList.toggle("show");
+        btn.classList.toggle("open");
+      }
+
+      function toggleInfo(btn) {
+        const popup = btn.nextElementSibling;
+        popup.classList.toggle("show");
+        document.addEventListener("click", function closePopup(e) {
+          if (!btn.parentElement.contains(e.target)) {
+            popup.classList.remove("show");
+            document.removeEventListener("click", closePopup);
+          }
+        });
+      }
+
+      function toggleAcc(header) {
+        const body = header.nextElementSibling;
+        const arrow = header.querySelector(".acc-arrow");
+        const wasOpen = body.classList.contains("show");
+        body.classList.toggle("show");
+        header.classList.toggle("active");
+      }
+
+      // მართლმადიდებლური აღდგომის გამოთვლა (მეტონის ციკლი, ძველი სტილი + 13 დღე)
+      function getOrthodoxEaster(year) {
+        var a = year % 4;
+        var b = year % 7;
+        var c = year % 19;
+        var d = (19 * c + 15) % 30;
+        var e = (2 * a + 4 * b - d + 34) % 7;
+        var month = Math.floor((d + e + 114) / 31);
+        var day = ((d + e + 114) % 31) + 1;
+        return new Date(year, month - 1, day + 13);
+      }
+
+      // ფიქსირებული თარიღების მიხედვით ავტო-გახსნა (ძველი სტილი + 13 დღე = ახალი სტილი)
+      (function autoOpenByDate() {
+        var now = new Date();
+        var m = now.getMonth() + 1;
+        var d = now.getDate();
+        var year = now.getFullYear();
+
+        var easter = getOrthodoxEaster(year);
+        var today = new Date(year, m - 1, d);
+        var diff = Math.round((today - easter) / (1000 * 60 * 60 * 24));
+
+        var period = null;
+
+        // მოძრავი დღესასწაულები (აღდგომასთან მიმართებით)
+        if (diff === -7)
+          period = "bzoba"; // ბზობა (აღდგომამდე 7 დღე)
+        else if (diff === -6)
+          period = "did-orshab"; // დიდი ორშაბათი
+        else if (diff === -5)
+          period = "did-samshab"; // დიდი სამშაბათი
+        else if (diff === -4)
+          period = "did-otkhshab"; // დიდი ოთხშაბათი
+        else if (diff === -3)
+          period = "did-khutshab"; // დიდი ხუთშაბათი
+        else if (diff === -2)
+          period = "did-paraskev"; // დიდი პარასკევი
+        else if (diff === -1)
+          period = "did-shabat"; // დიდი შაბათი
+        else if (diff >= 0 && diff <= 38)
+          period = "aghdgoma"; // აღდგომიდან ამაღლებამდე
+        else if (diff >= 39 && diff <= 48)
+          period = "amagleba"; // ამაღლებიდან სულთმოფენობამდე
+        else if (diff >= 49 && diff <= 55)
+          period = "sultmopen"; // სულთმოფენობიდან ყოველთა წმიდათა კვირიაკემდე
+        // ფიქსირებული დღესასწაულები (ახალი სტილით)
+        else if (m === 1 && d >= 7 && d <= 14) period = "shoba-qriste";
+        else if (m === 1 && d === 14) period = "tsinadatsueta";
+        else if (m === 1 && d === 19) period = "natlisgheba";
+        else if (m === 2 && d === 15) period = "mirqma";
+        else if (m === 4 && d === 7) period = "khareba";
+        else if (m === 8 && d >= 19 && d <= 27) period = "feriscvaleba";
+        else if ((m === 8 && d >= 28) || (m === 9 && d <= 5))
+          period = "midzineba";
+        else if (m === 9 && d >= 21 && d <= 26) period = "shoba-ghvtismshobeli";
+        else if ((m === 9 && d >= 27) || (m === 10 && d <= 5))
+          period = "juartamagleba";
+        else if (m === 12 && d >= 4 && d <= 9) period = "tadzrad";
+
+        if (period) {
+          var item = document.querySelector('[data-period="' + period + '"]');
+          if (item) {
+            var body = item.querySelector(".accordion-body");
+            if (body) {
+              // ავტომატურად შეიცვალოს "ღირს არს" ტექსტი კალენდარული ტექსტით
+              var ghirsText = document.getElementById("ghirsText");
+              if (ghirsText) {
+                ghirsText.innerHTML = body.innerHTML;
+              }
+            }
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

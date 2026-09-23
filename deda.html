@@ -1,0 +1,1097 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ლოცვები</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;700&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Noto Serif Georgian", Georgia, serif;
+        background: linear-gradient(135deg, #1a472a 0%, #2d5a1e 100%);
+        min-height: 100vh;
+        padding: 8px;
+        color: #2d3748;
+        line-height: 1.8;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 14px 12px 18px;
+        border-bottom: 2px solid #e2e8f0;
+      }
+
+      .header-title {
+        display: block;
+        color: #1b5e20;
+        font-size: clamp(1.25rem, 5vw, 2rem);
+        font-weight: 700;
+        line-height: 1.25;
+        white-space: nowrap;
+        letter-spacing: 0.02em;
+        text-shadow: 1px 2px 3px rgba(27, 94, 32, 0.16);
+      }
+
+      .header-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 15px auto 12px;
+        display: block;
+        box-shadow: 0 4px 15px rgba(139, 90, 43, 0.35);
+        border: 3px solid rgba(184, 134, 11, 0.5);
+      }
+
+      h1 {
+        color: #1b5e20;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 1px 1px 3px rgba(27, 94, 32, 0.2);
+      }
+
+      .subtitle {
+        color: #718096;
+        font-size: 1.1em;
+        font-style: italic;
+      }
+
+      .prayer-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+        padding: 0 12px;
+        width: 100%;
+      }
+
+      .prayer-dropdown {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .prayer-dropdown summary {
+        list-style: none;
+        user-select: none;
+        padding: 16px 20px;
+        border-radius: 15px;
+        border: 1px solid rgba(184, 134, 11, 0.3);
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #2d3748;
+        background: linear-gradient(180deg, #ffffff 0%, #f5f7f0 100%);
+        box-shadow:
+          0 6px 18px rgba(0, 0, 0, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        cursor: pointer;
+        position: relative;
+        padding-right: 48px;
+      }
+
+      .prayer-dropdown summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .prayer-dropdown summary::after {
+        content: "▾";
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #b8860b;
+        font-size: 1.1em;
+      }
+
+      .prayer-dropdown[open] summary::after {
+        content: "▴";
+      }
+
+      .prayer-dropdown summary:focus {
+        outline: 2px solid rgba(184, 134, 11, 0.5);
+        outline-offset: 2px;
+        box-shadow:
+          0 6px 18px rgba(0, 0, 0, 0.2),
+          0 0 0 3px rgba(184, 134, 11, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      .prayer-list {
+        margin-top: 10px;
+        background: white;
+        border: 1px solid rgba(184, 134, 11, 0.25);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+      }
+
+      .prayer-list a {
+        display: block;
+        padding: 12px 16px;
+        text-decoration: none;
+        color: #2d3748;
+        font-weight: 600;
+        border-bottom: 1px solid #eef0f5;
+        transition: background 0.2s ease;
+      }
+
+      .prayer-list a:last-child {
+        border-bottom: none;
+      }
+
+      .prayer-list a:hover {
+        background: linear-gradient(135deg, #f0f7e6 0%, #e8f5e0 100%);
+      }
+
+      .prayer-link {
+        background: linear-gradient(135deg, #604827 0%, #b8860b 100%);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .prayer-link:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .section {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        border-radius: 15px;
+        padding: 6px;
+        margin-bottom: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .section h2 {
+        color: #2d3748;
+        font-size: 1.3em;
+        margin-bottom: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .section h2::before,
+      .section h2::after {
+        content: none;
+      }
+
+      .prayer-text {
+        background: white;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border-left: 4px solid #b8860b;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-nexts {
+        display: btn-next grid;
+        gap: 15px;
+        margin-bottom: 40px;
+      }
+
+      .btn-next {
+        background: linear-gradient(135deg, #2e7d32 0%, #b8860b 100%);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-next:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Featured giorgi card */
+      .giorgi-featured {
+        margin-bottom: 20px;
+      }
+
+      .giorgi-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: linear-gradient(135deg, #5c3d00 0%, #8b6300 40%, #b8870c 72%, #c9a22a 100%);
+        padding: 11px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        color: white;
+        box-shadow:
+          0 6px 22px rgba(92, 61, 0, 0.52),
+          0 2px 8px rgba(0, 0, 0, 0.22),
+          inset 0 1px 0 rgba(255, 235, 150, 0.28);
+        border: 1.5px solid rgba(212, 175, 55, 0.7);
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .giorgi-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg,
+          rgba(212, 175, 55, 0.13) 0%,
+          rgba(255, 255, 255, 0.07) 30%,
+          transparent 60%);
+        pointer-events: none;
+      }
+
+      .giorgi-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+        transform: skewX(-20deg);
+        transition: left 0.6s ease;
+        pointer-events: none;
+      }
+
+      .giorgi-card:hover::after {
+        left: 130%;
+      }
+
+      .giorgi-card:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 14px 36px rgba(92, 61, 0, 0.62),
+          0 5px 14px rgba(0, 0, 0, 0.25),
+          inset 0 1px 0 rgba(255, 235, 150, 0.22);
+      }
+      .pantanasa-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: linear-gradient(135deg, #555cbe 0%, #27389b 40%, #2c48a1 72%, #183592 100%);
+        padding: 11px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        color: white;
+        box-shadow:
+          0 6px 22px rgba(92, 61, 0, 0.52),
+          0 2px 8px rgba(0, 0, 0, 0.22),
+          inset 0 1px 0 rgba(255, 235, 150, 0.28);
+        border: 1.5px solid rgba(212, 175, 55, 0.7);
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pantanasa-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg,
+          rgba(212, 175, 55, 0.13) 0%,
+          rgba(255, 255, 255, 0.07) 30%,
+          transparent 60%);
+        pointer-events: none;
+      }
+
+      .pantanasa-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+        transform: skewX(-20deg);
+        transition: left 0.6s ease;
+        pointer-events: none;
+      }
+
+      .pantanasa-card:hover::after {
+        left: 130%;
+      }
+
+      .pantanasa-card:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 14px 36px rgba(92, 61, 0, 0.62),
+          0 5px 14px rgba(0, 0, 0, 0.25),
+          inset 0 1px 0 rgba(255, 235, 150, 0.22);
+      }
+      .natlismcemeli-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: linear-gradient(135deg, #0e420e 0%, #085c0f 40%, #144b04 72%, #06380a 100%);
+        padding: 11px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        color: white;
+        box-shadow:
+          0 6px 22px rgba(92, 61, 0, 0.52),
+          0 2px 8px rgba(0, 0, 0, 0.22),
+          inset 0 1px 0 rgba(255, 235, 150, 0.28);
+        border: 1.5px solid rgba(212, 175, 55, 0.7);
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .natlismcemeli-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg,
+          rgba(212, 175, 55, 0.13) 0%,
+          rgba(255, 255, 255, 0.07) 30%,
+          transparent 60%);
+        pointer-events: none;
+      }
+
+      .natlismcemeli-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+        transform: skewX(-20deg);
+        transition: left 0.6s ease;
+        pointer-events: none;
+      }
+
+      .natlismcemeli-card:hover::after {
+        left: 130%;
+      }
+
+      .natlismcemeli-card:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 14px 36px rgba(92, 61, 0, 0.62),
+          0 5px 14px rgba(0, 0, 0, 0.25),
+          inset 0 1px 0 rgba(255, 235, 150, 0.22);
+      }
+
+      .giorgi-icon {
+        font-size: 1.8em;
+        flex-shrink: 0;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      }
+
+      .giorgi-text {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .giorgi-title {
+        font-size: 1.05em;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.35);
+      }
+
+      .giorgi-sub {
+        font-size: 0.75em;
+        opacity: 0.82;
+        margin-top: 2px;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        color: rgba(255, 238, 180, 0.88);
+      }
+
+      .giorgi-arrow {
+        font-size: 1.7em;
+        opacity: 0.75;
+        flex-shrink: 0;
+        color: rgba(255, 225, 120, 0.85);
+      }
+
+      .names-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .name-item {
+        background: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s ease;
+      }
+
+      .name-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .info-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+        color: white;
+        font-size: 11px;
+        cursor: pointer;
+        margin-left: 100px;
+        vertical-align: middle;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        flex-shrink: 0;
+        transition: transform 0.2s ease;
+      }
+
+      .info-btn:hover {
+        transform: scale(1.2);
+      }
+
+      .info-popup {
+        display: none;
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 20px;
+        z-index: 100;
+        background: white;
+        border: 1px solid rgba(184, 134, 11, 0.4);
+        border-radius: 8px;
+        padding: 10px 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+        font-size: 0.85em;
+        line-height: 1.6;
+        min-width: 260px;
+        max-width: 320px;
+        color: #2d3748;
+      }
+
+      .info-popup.show {
+        display: block;
+      }
+
+      .counter-section {
+        background: linear-gradient(135deg, #c8e6c9 0%, #fff8e1 100%);
+        border-radius: 20px;
+        padding: 25px 20px;
+        text-align: center;
+        margin: 30px 0;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        border: 1px solid rgba(184, 134, 11, 0.15);
+      }
+
+      .counter-display {
+        font-size: 2.8em;
+        font-weight: bold;
+        color: #1b5e20;
+        margin: 15px 0;
+        text-shadow: 1px 1px 3px rgba(27, 94, 32, 0.15);
+        background: white;
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        border-radius: 12px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 2px solid rgba(184, 134, 11, 0.25);
+      }
+
+      .counter-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        min-width: 55px;
+      }
+
+      .btn-next {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.3em;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(24, 24, 24, 0.2);
+      }
+
+      .row {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: min(100%, 380px);
+        margin: 56px auto 0;
+      }
+
+      .row .btn-next {
+        width: 100%;
+      }
+
+      .btn-decrease {
+        background: linear-gradient(135deg, #2e7d32, #1b5e20);
+        color: white;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        padding: 0;
+        font-size: 1.5em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-reset {
+        background: linear-gradient(135deg, #b8860b, #8B6914);
+        color: white;
+        border-radius: 50px;
+        padding: 12px 28px;
+        font-size: 1em;
+      }
+
+      .btn-increase {
+        background: linear-gradient(135deg, #2e7d32, #1b5e20);
+        color: white;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        padding: 0;
+        font-size: 1.5em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn:active {
+        transform: scale(0.95);
+      }
+
+      .scroll-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .scroll-top:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .psalm-text {
+        background: white;
+        padding: 5px;
+        border-radius: 10px;
+        border-left: 4px solid #2e7d32;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .flower-icon {
+        color: #b8860b;
+        margin: 0 5px;
+      }
+
+      .font-controls {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .font-label {
+        font-size: 0.85em;
+        color: #718096;
+        margin-right: 2px;
+      }
+
+      .font-btn {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(184, 134, 11, 0.4);
+        border-radius: 8px;
+        background: rgba(184, 134, 11, 0.1);
+        color: #b8860b;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+      }
+
+      .font-btn:hover {
+        background: rgba(184, 134, 11, 0.28);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 2px solid #e2e8f0;
+        color: #718096;
+      }
+
+      .ghirs-arsi-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .ghirs-arsi-wrap em {
+        margin: 0;
+      }
+
+      .toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border: none;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        flex-shrink: 0;
+      }
+
+      .toggle-btn:hover {
+        transform: scale(1.15);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .toggle-btn.open {
+        transform: rotate(180deg);
+      }
+
+      .toggle-btn.open:hover {
+        transform: rotate(180deg) scale(1.15);
+      }
+
+      .ghirs-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+
+      .ghirs-content.show {
+        max-height: 10000px;
+      }
+
+      .accordion-item {
+        border: 1px solid rgba(184, 134, 11, 0.2);
+        border-radius: 10px;
+        margin-bottom: 8px;
+        overflow: hidden;
+        background: #f9faf5;
+        display: none;
+      }
+
+      .accordion-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #2e7d32;
+        background: linear-gradient(135deg, #f5f9f0 0%, #f0f5e8 100%);
+        user-select: none;
+        transition: background 0.2s;
+        font-size: 0.95em;
+      }
+
+      .accordion-header:hover {
+        background: linear-gradient(135deg, #e8f0e0 0%, #dfe8d5 100%);
+      }
+
+      .accordion-header .acc-arrow {
+        transition: transform 0.3s ease;
+        font-size: 14px;
+      }
+
+      .accordion-header.active .acc-arrow {
+        transform: rotate(180deg);
+      }
+
+      .accordion-header .acc-date {
+        font-size: 0.8em;
+        color: #718096;
+        font-weight: normal;
+        margin-left: 6px;
+      }
+
+      .accordion-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        padding: 0 14px;
+      }
+
+      .accordion-body.show {
+        max-height: 3000px;
+        padding: 10px 14px;
+      }
+
+      .accordion-body p {
+        margin-bottom: 8px;
+        line-height: 1.7;
+      }
+
+      .accordion-item.current {
+        border-color: #b8860b;
+        box-shadow: 0 2px 10px rgba(184, 134, 11, 0.2);
+        display: block;
+      }
+
+      .accordion-item.current .accordion-header {
+        background: linear-gradient(135deg, #dcedc8 0%, #c8e6c9 100%);
+      }
+
+      .accordion-item.current .accordion-header::after {
+        content: " ✦";
+        color: #b8860b;
+        font-size: 0.8em;
+      }
+       .top-back {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 2px;
+        }
+
+        .prayer-links {
+          padding: 0 8px;
+        }
+
+         .top-back {
+          width: 30px;
+          height: 30px;
+          font-size: 18px;
+          left: 10px;
+        }
+
+        h1 {
+          font-size: 2em;
+        }
+
+        .header-title {
+          font-size: clamp(1.1rem, 5.8vw, 1.6rem);
+        }
+
+        .names-list {
+          grid-template-columns: 1fr;
+        }
+
+        .counter-display {
+          font-size: 1.8em;
+          width: 65px;
+          height: 65px;
+          line-height: 65px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+         <header>
+        <span class="header-title">დედის ლოცვა</span>
+      </header>
+      <div class="font-controls">
+        <div class="font-controls-right">
+          <span class="font-label">ფონტი:</span>
+          <button class="font-btn" onclick="adjustFont(-1)" title="ამცირე">
+            A&#8722;
+          </button>
+          <button class="font-btn" onclick="adjustFont(1)" title="გაადიდე">
+            A+
+          </button>
+        </div>
+      </div>
+        
+      <div class="section">
+        <div class="prayer-text">
+        
+     უფალო იესო ქრისტე, ძეო ღმრთისაო, ლოცვითა ყოვლადწმიდისა დედისა შენისათა, ისმინე უღირსისა მონისა შენისა (სახელი). უფალო, მოწყალისა ხელმწიფებასა შენისა ქვეშე არიან შვილნი ჩემნი, მონანი შენნი (სახელი). შეიწყალენ და აცხოვნენ იგინი სახელისა შენისათვის. უფალო შეუნდვენ მათ ყოველნი შეცოდებანი მათნი, ნებსითნი და უნებლიეთნი, ქმნულნი წინაშე შენსა. უფალო, წარუძეღ მცნებათა შენთა ჭეშმარიტსა გზასა ზედა და განანათლე გონებანი მათნი ნათლითა ქრისტესისა საცხოვნებელად სულისა და საკურნებალად ხორცისა. უფალო, აკურთხე იგინი სახლსა შინა, სასწავლებელსა, გზასა და ყოველსა ადგილსა მეუფებისა შენისასა. უფალო, დაიცვენ იგინი საფარველსა ქვეშე შენსა წმიდასა ფრინავისაგან ტყვიისა, ისრისა, მახვილისაგან, სამსალისა, ცეცხლისა, სიკვდილშემოსილისა წყლულებისაგან და მოულოდნელისა სიკვდილისა. უფალო, გარეშემოზღუდე იგინი ყოველთა ხილულთა და უხილავთა მტერთაგან, ყოველთა განსაცდელთა, სიბოროტეთა და უბედურებათაგან. უფალო, განკურნე იგინი ყოველთა სნეულებათაგან, განწმიდნე ყოველთაგან სიბილწეთა და ულხინე სულიერთა ვნებათა შინა. უფალო, მიჰმადლე მათ მადლი სულისა შენისა წმიდისა ყოველთა დღეთა ცხოვრებისა მათისათა, სიმრთელე და უმანკოება ყოველსა შინა კეთილმსახურებასა და სიყვარულსა მშვიდობის თანა ახლობელთა და შორებელთა მიმართ. უფალო, განამრავლე და განამტკიცე გონებითნი ნიჭნი და ხორციელნი ძალნი მათნი ბოძებულნი შენ მიერ, კურთხევა შენი ღვთისმოშიშებითსა და უკეთუ სათნო შენდა არს, ოჯახებრივსა ცხოვრებასა და ურცხვენელსა შვილთსხმასა მათსა ზედა. უფალო, მომეც მე უღირსსა და ცოდვილსა მონასა შენსა (სახელი) შვილთა ჩემთა და მონათა შენთა ზედა კურთხევა მშობლიური ამჟამინდელსა ცისკარსა (დილასა), დღესა და ღამესა შინა სახელისა შენისათვის, რამეთუ საუკუნო, ყოვლისა შემძლებელ და ყოვლადძლიერ არს მეუფება შენი, ამინ.
+
+* * *
+ღმერთო, შემოქმედო ყოველთა დაბადებულთაო, შენ ღირს-მყავ მე დედობასა ოჯახისასა, 
+სახიერებამან შენმან მომმადლა მე შვილნი, და კადნიერ ვიქნები თქმად: შენნი არიან იგინი,
+ რამეთუ შენგან აქვთ მყოფობა, და შენ განაცხოველე იგინი სულითა უკვდავითა, აღმოშობე 
+ ნათლისღებითა ცხოვრებად ნებითა შენითა, იშვილე იგინი და დაადგინე წიაღსა შინა შენისა ეკლესიისა.
+  გარდმომივლინე მე მადლმოსილი შეწევნა შენი აღზრდად მათდა სადიდებელად სახელისა შენისა. 
+  მომმადლე მე ამისთვისცა მოთმინებაი და ძალი. მასწავე მე ვითარ დავნერგო გულსა შინა მათსა 
+  ძირი სიბრძნისა - შიში უფლისა, რათა ყოველთა დღეთა ცხოვრებისა მათისათა ძრწოდნენ სიტყვათაგან შენთა. 
+  განუხვენ მათ გონებისა მათისა საცნობელნი გულისხმისყოფად სჯულისა შენისა. და მიმწუხრამდე ცხოვრებისა 
+  მათისა ჰმოქმედებდნენ შენისა ყველგანმყოფობისა შეგრძნებითა. დაასხ გულთა შინა მათთა გარემიქცევაი ყოვლისა 
+  უსჯულოებისაგან, რათა უბიწოებითა ვიდოდნენ გზათა თვისთა ზედა. მსაჯულო სიმართლისაო, რომელი 
+  მშობელთა ცოდვათათვის დასჯი შვილთა, ნუ დასჯი მათ ცოდვთა ჩემთა გამო, არამედ აწვიმე მათ ცვარი 
+  მადლისაგან შენისა. მამაო ზეცათაო, წარმართე ბედი შვილთა ჩემთა კურთხევითა შენითა, და ნუ მოაკლებ 
+  მათ პურსა არსობისასა ყოველთა დღეთა და გარდმოუვლინე ყოველივე მიუცილებელი თვისსა ჟამსა, რათა 
+  ჰპოვონ ნეტარება საუკუნო. მოწყალე ექმენ, ცოდვათა შინა მათსა, ნუ შეურაცხავ ცოდვათა სიჭაბუკისა და 
+  უმეცრებისა მათისათა, დასჯიდე მათ და სწყალობდე, გარნა ნუ განიშორებ მათ პირისა შენისაგან. ნუ გარემიაქცევ 
+  პირსა შენსა მათგან ოდეს იურვოდნენ, რათა არა ეწეოდნენ მათ განსაცდელნი დაუტევნელნი. მოჰფინე წყალობა შენი, 
+  რათა ვიდოდეს ანგელოსი შენი მათთანა და სცვიდეს მათ. ნუ დაუტევებ შვილთა ჩემთა, უფალო, არამედ მიანიჭე სარგებელი საცხოვნებლად, ამინ.
+
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="prayer-text">
+                  <span class="header-title" style="margin-bottom:15px; margin-left:28px; text-decoration: underline;">ფსალმუნნი</span>
+                  <strong>3. ფსალმუნი დავითისი, რაჟამს ივლტოდა იგი პირისაგან აბესალომისა, ძისა თვისისა</strong> <br>
+1. უფალო, რად განმრავლდეს მაჭირვებელნი ჩემნი? და მრავალნი აღსდგეს ჩემ ზედა. 
+2. მრავალთა ჰრქვიან სულსა ჩემსა: არა არს ცხორებაი მისი ღმრთისა მიერ მისისა. 3. ხოლო შენ, უფალო, მწე ჩემდა ხარ, დიდება ჩემდა და ასამაღლებელ თავისა ჩემისა. 4. ხმითა ჩემითა უფლისა მიმართ ღაღად-ვჰყავ და შეესმა ჩემი მთით წმიდით მისით. 5. მე დავწევ და დავიძინე და განვიღვიძე, რამეთუ უფალი მწე მეყო მე. 6. არა შემეშინოს მე ბევრეულისაგან ერისა, რომელთა-იგი გარემომიცვეს მე. 7. აღსდეგ, უფალო, მაცხოვნე მე, ღმერთო ჩემო, რამეთუ შენ დასცენ ყოველნი, 
+რომელნი მემტერნეს მე ამაოდ; კბილნი ცოდვილთანი შენ შეჰმუსრენ. 8. უფლისაი არს ცხორებაი და ერსა შენსა ზედა არს კურთხევაი შენი. <br> <br>
+
+<strong>26. ფსალმუნი დავითისი, პირველ ცხებისაი</strong> <br>
+1. უფალი ნათელ ჩემდა და მაცხოვარ ჩემდა; ვისა მეშინოდის? უფალი შესავედრებელ არს ცხორებისა ჩემისა; ვისგან შევძრწუნდე? 
+2. მოახლებასა ჩემ ზედა უკეთურთასა შეჭმად ხორცთა ჩემთა, მაჭირვებელნი ჩემნი და მტერნი ჩემნი - იგინი მოუძლურდეს და დაეცნეს.
+ 3. განთუ-ეწყოს ჩემ ზედა ბანაკი, არა შეეშინოს გულსა ჩემსა, აღ-თუ-დგეს ჩემ ზედა ბრძოლაი, ამისთვისცა მე შენ გესავ. 
+ 4. ერთი ვითხოვე უფლისაგან, ესევე ვითხოვო: დამკვიდრებად ჩემდა სახლსა უფლისასა ყოველთა დღეთა ცხორებისა ჩემისათა, 
+ ხილვად ჩემდა შუენიერებაი უფლისაი და მოხილვად ტაძარი მისი. 5. რამეთუ დამფარა მე კარავსა შინა მისსა დღესა შინა ბოროტთა ჩემთასა,
+  დამფარა მე დაფარულსა კარვისა მისისა, კლდესა ზედა აღმამაღლა მე. 6. და აწ ესერა აღამაღლა თავი ჩემი ზედა მტერთა ჩემთა; 
+  გარე მოვადეგ და შევწირე კარავსა შინა მისსა მსხუერპლი ქებისა და ღაღადებისაი, ვაქებდე და უგალობდე უფალსა. 
+  7. ისმინე, უფალო, ხმისა ჩემისაი, რომლითა ღაღად-ვჰყავ, მიწყალე მე და ისმინე ჩემი. 
+  8. შენ გრქუა გულმან ჩემმან: უფალი მოვიძიო; გამოგიძია შენ პირმან ჩემმან; პირი შენი, უფალო, მოვიძიო. 
+  9. ნუ გარე-მიიქცევ პირსა შენსა ჩემგან და ნუ მიიქცევ რისხვით მონისა შენისაგან. შემწე ჩემდა იყავ, ნუ შეურაცხ-მყოფ მე და ნუ დამაგდებ მე, ღმერთო, 
+  მაცხოვარო ჩემო. 10. რამეთუ მამამან ჩემმან და დედამან ჩემმან დამაგდეს მე, ხოლო უფალმან შემიწყნარა მე. 11. შჯულიერ მყავ მე, უფალო, 
+  გზასა შენსა და მიძეღუ მე ალაგთა შენთა წრფელთა მტერთა ჩემთათვის. 12. ნუ მიმცემ მე სულთა მაჭირვებელთა ჩემთასა, 
+  რამეთუ აღსდგეს ჩემ ზედა მოწამენი ცრუნი და უტყუვა სიცრუვემან თავსა თვისსა. 
+13. მრწამს მე ხილვად კეთილი უფლისაი ქუეყანასა მას ცხოველთასა. 14. დაუთმე უფალსა; მხნე იყავნ და განძლიერდინ გული შენი და დაუთმე უფალსა. <br> <br>
+
+<strong>ფსალმუნი დავითისი, 102</strong> <br>
+1. აკურთხევს სული ჩემი უფალსა და ყოველი გონებაი ჩემი - სახელსა წმიდასა მისსა. 2. აკურთხევს სული ჩემი უფალსა, და ნუ დაივიწყებ ყოველსა მოცემულსა მისსა, 3. რომელმან გილხინა შენ ყოველთა უშჯულოებათა შენთაგან, რომელმან განკურნა ყოველნი სნეულებანი შენნი; 4. რომელმან იხსნა განხრწნისაგან ცხოურებაი შენი და გვირგვინოსან-გყო შენ წყალობითა და შეწყნარებითა; 5. რომელმან აღავსო კეთილთა მიერ გულის-თქუმაი შენი; განახლდეს, ვითარცა ორბისა, სიჭაბუკე შენი. 6. ჰყვნის წყალობანი უფალმან და სამართალი ყოველთათვის დაწუნებულთა. 7. აუწყნა გზანი მისნი მოსეს და ძეთა ისრაელისათა - ნებანი მისნი. 8. შემწყნარებელ და მოწყალე არს უფალი, სულგრძელ და დიდად მოწყალე. 9. არა სრულიად განრისხნეს, არცა უკუნისამდე ძვირი იხსენოს; 10. არა ცოდვათა ჩუენთაებრ მიყო ჩუენ, არცა უშჯულოებათა ჩუენთაებრ მომაგო ჩუენ. 11. რამეთუ რავდენ მაღალ არიან ცანი ქუეყანისაგან, განაძლიერა უფალმან წყალობაი მისი მოშიშთა მისთა ზედა; 12. რაოდენ განშორებულ არიან აღმოსავალნი დასავალსა, განმაშორნა ჩუენგან უჰსჯულოებანი ჩუენნი. 13. ვითარცა სწყალობს მამაი შვილთა, შეიწყალნა უფალმან მოშიშნი მისნი. 14. რამეთუ მან უწყის დაბადებაი ჩუენი; მოიხსენა, რამეთუ მიწანი ვართ. 15. კაცი ვითარცა თივა არიან დღენი მისნი, ვითარცა ყუავილი ველისაი ეგრე აღყუავდეს; 16. რამეთუ განვლო სულმან მის შორის, და არღარა იყოს, და არცა იცნას ადგილი მისი. 17. ხოლო წყალობაი უფლისაი საუკუნითგან და ვიდრე უკუნისამდე მოშიშთა მისთა ზედა, 18. და სიმართლე მისი - შვილითი შვილადმდე, რომელთა დაიმარხნიან აღთქუმაი მისი და მოიხსენნიან მცნებანი მისნი და ყვნიან იგინი. 19. უფალმან ზეცას განჰმზადა საყდარი მისი, და სუფევაი მისი ყოველთა ზედა ეუფლების. 20. აკურთხევდით უფალსა ყოველნი ანგელოზნი მისნი, ძლიერნი ძალითა, რომელნი ჰყოფენ სიტყუასა მისსა, სმენად ხმაი სიტყუათა მისთაი. 21. აკურთხევდით უფალსა ყოველნი ძალნი მისნი, მსახურნი მისნი, რომელნი ჰყოფენ ნებასა მისსა.
+ 22. აკურთხევდით უფალსა ყოველნი ქმნულნი მისნი ყოველსა ადგილსა უფლებისა მისისასა; აკურთხევს სული ჩემი უფალსა. <br> <br>
+ <strong>ალილუია, 117</strong> <br>
+1. აუარებდით უფალსა, რამეთუ კეთილ, რამეთუ უკუნისამდე არს წყალობაი მისი; 2. თქუნ სახლმან ისრაელისამან, რამეთუ კეთილ, 
+რამეთუ უკუნისამდე არს წყალობაი მისი; 3. თქუნ სახლმან აჰრონისმან, რამეთუ კეთილ, რამეთუ უკუნისამდე არს წყალობაი მისი; 
+4. თქუედ ყოველთა მოშიშთა უფლისათა, რამეთუ კეთილ, რამეთუ უკუნისამდე არს წყალობაი მისი. 5. ჭირსა ჩემსა ვხადე უფალსა, და 
+ისმინა ჩემი და გამომიყვანა მე ფართოდ. 6. უფალი არს მწე ჩემდა, არა შემეშინოს რაი მიყოს მე კაცმან? 7. უფალი არს მწე ჩემდა, და 
+მე ვიხილნე მტერნი ჩემნი. 8. კეთილ არს მოსავ-ყოფაი უფლისა მიმართ, ვიდრე მოსავ-ყოფაი კაცისა მიმართ; 
+9. კეთილ არს სასოებაი უფლისა მიმართ, ვიდრე სასოებაი მთავართა მიმართ. 10. ყოველი თესლები გარე-მომადგეს მე, და სახელითა 
+უფლისაითა ვერეოდი მათ. 11. გარე-მომადგეს და მომიცვეს მე, და სახელითა უფლისაითა ვერეოდი მათ; 12. მომადგეს მე, 
+ვითარცა ფუტკარნი გოლსა, და აღეტყინნეს, ვითარცა ცეცხლი ეკალთა შორის, და სახელითა უფლისაითა ვერეოდი მათ; 
+13. მივდერკ ჭენებით დაცემად, და უფალმან ხელი აღმიპყრა მე. 14. ძალი ჩემი და გალობაი ჩემი უფალი და მეყო მე იგი მაცხოვარ. 
+15. ხმაი სიხარულისაი და ცხოურებისაი საყოფელსა მართალთასა: 16. მარჯუენემან უფლისამან ქმნა ძალი, მარჯუენემან უფლისამან აღმამაღლა მე, 
+მარჯუენემან უფლისამან ქმნა ძალი. 17. არა მოვკუდე, არამედ ვცხოვნდე და განვსთქუნე მე საქმენი უფლისანი. 18. სწავლით განმსწავლა 
+მე უფალმან და სიკუდილსა არა მიმცა მე. 19. განმიხუენით მე ბჭენი სიმართლისანი, შევიდე მათ შინა და აუვარო უფალსა. 
+20. ესე არს ბჭე უფლისაი, და მართალნი შევლენან ამას შინა. 21. აღგიარო შენ, რამეთუ ისმინე ჩემი და იქმენ ჩემდა მაცხოვარ. 
+22. ლოდი, რომელი შეურაცხ-ჰყვეს მაშენებელთა, ესე იქმნა თავ კიდეთა; 23. უფლისა მიერ იყო ესე, და არს საკვირველ წინაშე თუალთა ჩუენთა. 
+24. ესე არს დღე, რომელ ქმნა უფალმან; ვიხარებდეთ და ვიშუებდეთ ამას შინა. 25. უფალო, მაცხოვნე მე, უფალო, წარმიმართე მე. 
+26. კურთხეულ არს მომავალი სახელითა უფლისაითა; გაკურთხენით თქუენ სახელითა უფლისაითა. 27. ღმერთი უფალი და გამოგვიჩნდა ჩუენ; 
+განჰმზადეთ დღესასწაული ჟამსა ყუავილთასა ვიდრე რქათამდე საკურთხეველისათა. 28. ღმერთი ჩემი ხარი შენ, და აღგიარო შენ, ღმერთი ჩემი ხარი შენ, და 
+აღგამაღლო შენ; აღგიარო შენ, რამეთუ ისმინე ჩემი და იქმენ ჩემდა მაცხოვარ.
+ 29. აუარებდით უფალსა, რამეთუ კეთილ, რამეთუ უკუნისამდე არს წყალობაი მისი.<br> <br>
+  <strong>ალილუია, ანგეასი და ზაქარიაისი, 145</strong> <br>
+1. აქებს სული ჩემი უფალსა. 2. ვაქებდე უფალსა, ცხორებასა ჩემსა უგალობდე ღმერთსა ჩემსა, ვიდრემდის ვიყო მე. 
+3. ნუ ესავთ მთავართა, ძეთა კაცთასა, რომელთა თანა არა არს ცხორებაი. 4. გამოვიდის სული მისი და მიიქცის მუნვე მიწად მისდა; 
+მას დღესა შინა წარწყმდიან ყოველნი ზრახვანი მისნი. 5. ნეტარ არს, რომლისა ღმერთი იაკობისი შემწე არს მისა, და 
+სასოებაი მისი არს უფლისა მიმართ ღმრთისა მისისა; 6. რომელმან ქმნნა ცანი და ქუეყანაი, ზღუაი და ყოველი, რაი არს მას შინა; რომელი 
+იმარხავნ ჭეშმარიტებასა უკუნისამდე; 7. ჰყვის სამართალი ვნებულთაი და ჰსცის საზრდელი მშიერთა. უფალმან განჰხსნნის კრულნი; 
+8. უფალმან განაბრძვნის ბრმანი უფალმან აღმართნის დაცემულნი, უფალსა უყუარან მართალნი; 9. უფალმან დაიცვნის მწირნი, ობოლი და 
+ქურივი შეიწყნაროს და გზაი ცოდვილთაი წარწყმიდოს. 
+10. სუფევს უფალი უკუნისამდე, ღმერთი შენი, სიონ თესლითი თესლადმდე. <br> <br>
+<p class="memorial-opening" style="font-style: italic;">
+            დიდება მამასა და ძესა და წმიდასა სულსა, აწ და მარადის და უკუნითი
+            უკუნისამდე, ამინ.
+          </p>
+
+          <p style="font-style: italic;">უფალო, შეგვიწყალენ. (3-ჯერ)</p>
+
+          <p style="font-style: italic;">
+            უფალო, იესუ ქრისტე, ძეო ღმრთისაო, ლოცვითა ყოვლად წმიდისა დედისა
+            შენისათა, ღირსთა და ღმერთშემოსილთა მამათა ჩვენთათა და ყოველთა
+            წმიდათა შენთათა, შეგვიწყალენ ჩვენ, ამინ.
+          </p>
+        </div>
+      </div>
+
+      </div>
+      <div class="nav-bottom" style="display: flex; justify-content: center; padding: 10px; margin-bottom: 30px; margin-right: 40px;">
+        <a href="index.html" class="btn-next">მთავარი გვერდი</a>
+      </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+      ↑
+    </button>
+
+    <script>
+      let counter = 0;
+
+      function increaseCounter() {
+        counter++;
+        updateCounter();
+      }
+
+      function decreaseCounter() {
+        if (counter > 0) {
+          counter--;
+          updateCounter();
+        }
+      }
+
+      function resetCounter() {
+        counter = 0;
+        updateCounter();
+      }
+
+      function updateCounter() {
+        document.getElementById("counter").textContent = counter;
+      }
+
+      function goToPrayer(url) {
+        if (url) {
+          window.location.href = url;
+        }
+      }
+
+      // Scroll to top functionality
+      window.onscroll = function () {
+        const btn = document.getElementById("scrollTopBtn");
+        if (
+          document.body.scrollTop > 300 ||
+          document.documentElement.scrollTop > 300
+        ) {
+          btn.style.display = "flex";
+        } else {
+          btn.style.display = "none";
+        }
+      };
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      let currentFontSize = parseInt(localStorage.getItem("fontSize"), 10) || 17;
+      function applyFontSize() {
+        document
+          .querySelectorAll(".content, .prayer-text, .psalm-text")
+          .forEach(function (el) {
+            el.style.fontSize = currentFontSize + "px";
+          });
+      }
+      function adjustFont(delta) {
+        currentFontSize = Math.min(26, Math.max(14, currentFontSize + delta));
+        localStorage.setItem("fontSize", currentFontSize);
+        applyFontSize();
+      }
+      applyFontSize();
+
+      function toggleGhirs() {
+        const content = document.getElementById("ghirsContent");
+        const btn = document.getElementById("ghirsToggle");
+        content.classList.toggle("show");
+        btn.classList.toggle("open");
+      }
+
+      function toggleInfo(btn) {
+        const popup = btn.nextElementSibling;
+        popup.classList.toggle('show');
+        document.addEventListener('click', function closePopup(e) {
+          if (!btn.parentElement.contains(e.target)) {
+            popup.classList.remove('show');
+            document.removeEventListener('click', closePopup);
+          }
+        });
+      }
+
+      function toggleAcc(header) {
+        const body = header.nextElementSibling;
+        const arrow = header.querySelector('.acc-arrow');
+        const wasOpen = body.classList.contains('show');
+        body.classList.toggle('show');
+        header.classList.toggle('active');
+      }
+
+      
+    </script>
+  </body>
+</html>
