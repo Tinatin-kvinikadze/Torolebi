@@ -242,7 +242,7 @@
   overlay.className = "prayer-groups-overlay";
   overlay.innerHTML = `
     <button class="prayer-groups-backdrop" type="button" aria-label="დახურვა"></button>
-    <section class="prayer-groups-sheet" role="dialog" aria-modal="true" aria-label="ვისთვის ვლოცულობთ" tabindex="-1">
+    <section class="prayer-groups-sheet" role="dialog" aria-modal="true" aria-label="მოსახსენებელი" tabindex="-1">
       <div class="prayer-groups-handle" aria-hidden="true"></div>
       <div class="prayer-groups-header"></div>
       <button class="prayer-groups-close" type="button" aria-label="დახურვა">✕</button>
@@ -272,7 +272,7 @@
     trigger.type = "button";
     trigger.className = "prayer-groups-trigger";
     trigger.dataset.prayerGroupsTrigger = "";
-    trigger.textContent = "ვისთვის ვლოცულობთ";
+    trigger.textContent = "მოსახსენებელი";
     trigger.setAttribute("aria-haspopup", "dialog");
     trigger.setAttribute("aria-expanded", "false");
     prayerBlocks[prayerBlocks.length - 1].appendChild(trigger);
@@ -281,7 +281,7 @@
   if (!triggers.length) return;
   triggers.forEach(function (button) {
     button.classList.add("prayer-groups-trigger");
-    button.textContent = "ვისთვის ვლოცულობთ";
+    button.textContent = "მოსახსენებელი";
     button.setAttribute("aria-haspopup", "dialog");
     button.setAttribute("aria-expanded", "false");
   });
