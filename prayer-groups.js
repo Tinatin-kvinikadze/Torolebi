@@ -71,8 +71,8 @@
       display: flex;
       flex-direction: column;
       width: min(100%, 720px);
-      height: 65vh;
-      height: 65dvh;
+      height: 70vh;
+      height: 70dvh;
       max-height: 85vh;
       padding: 8px 14px max(12px, env(safe-area-inset-bottom));
       overflow: hidden;
