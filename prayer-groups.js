@@ -266,18 +266,6 @@
   var nextButton = overlay.querySelector('[data-direction="1"]');
   var closeButton = overlay.querySelector(".prayer-groups-close");
   var triggers = Array.from(document.querySelectorAll("[data-prayer-groups-trigger]"));
-  var prayerBlocks = document.querySelectorAll(".prayer-text");
-  if (!triggers.length && prayerBlocks.length) {
-    var trigger = document.createElement("button");
-    trigger.type = "button";
-    trigger.className = "prayer-groups-trigger";
-    trigger.dataset.prayerGroupsTrigger = "";
-    trigger.textContent = "მოსახსენებელი";
-    trigger.setAttribute("aria-haspopup", "dialog");
-    trigger.setAttribute("aria-expanded", "false");
-    prayerBlocks[prayerBlocks.length - 1].appendChild(trigger);
-    triggers.push(trigger);
-  }
   if (!triggers.length) return;
   triggers.forEach(function (button) {
     button.classList.add("prayer-groups-trigger");
